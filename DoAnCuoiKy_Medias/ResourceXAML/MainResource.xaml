@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodel="clr-namespace:DoAnCuoiKy_Medias.ViewModel">
+    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:ChooseProfilesViewModel x:Key="ProfilesVM"></viewmodel:ChooseProfilesViewModel>
+    <viewmodel:AddProfilesViewModel x:Key="AddProfilesVM"></viewmodel:AddProfilesViewModel>
+    <viewmodel:UserViewModel x:Key="UserVM"></viewmodel:UserViewModel>
+    <viewmodel:RegistrationViewModel x:Key="RegistrationVM"></viewmodel:RegistrationViewModel>
+    <viewmodel:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodel:ForgotPasswordViewModel>
+    <viewmodel:ChooseThePlanViewModel x:Key="ChooseThePlanVM"></viewmodel:ChooseThePlanViewModel>
+    <viewmodel:PaymentViewModel x:Key="PaymentVM"></viewmodel:PaymentViewModel>
+    <viewmodel:MoviesViewModel x:Key="MoviesVM"></viewmodel:MoviesViewModel>
+    <viewmodel:ManageProfilesViewModel x:Key="ManageProfilesVM"></viewmodel:ManageProfilesViewModel>
+    <viewmodel:EditProfilesViewModel x:Key="EditProfilesVM"></viewmodel:EditProfilesViewModel>
+    <viewmodel:YourAccountViewModel x:Key="YourAccountVM"></viewmodel:YourAccountViewModel>
+    <viewmodel:AdminDashboardViewModel x:Key="AdminDashboardVM"></viewmodel:AdminDashboardViewModel>
+</ResourceDictionary>

@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="DoAnCuoiKy_Medias.UserControlMedias.UserControlUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:DoAnCuoiKy_Medias"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             Name="ucControlBar"
+             mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <materialDesign:ColorZone Mode="Inverted" Height="60">
+            <materialDesign:ColorZone.Background>
+                <SolidColorBrush Opacity="0.5" Color="Black"/>
+            </materialDesign:ColorZone.Background>
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="0,0,10,0">
+                    <Button Width="50" Height="35" ToolTip="MaterialDesignFlatButton" Command="{Binding MinimizeWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}">
+                        <Button.Content>
+                            <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White"></materialDesign:PackIcon>
+                        </Button.Content>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                                <Setter Property="Background" Value="Transparent"></Setter>
+                                <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF787878"></Setter>
+                                        <Setter Property="BorderBrush" Value="#FF787878"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Width="50" Height="35" ToolTip="MaterialDesignFlatButton" Command="{Binding MaximizeWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}">
+                        <Button.Content>
+                            <materialDesign:PackIcon Kind="WindowMaximize" Foreground="White"></materialDesign:PackIcon>
+                        </Button.Content>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                                <Setter Property="Background" Value="Transparent"></Setter>
+                                <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF787878"></Setter>
+                                        <Setter Property="BorderBrush" Value="#FF787878"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Width="50" Height="35" ToolTip="MaterialDesignFlatButton" Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}">
+                        <Button.Content>
+                            <materialDesign:PackIcon Kind="WindowClose" Foreground="White"></materialDesign:PackIcon>
+                        </Button.Content>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                                <Setter Property="Background" Value="Transparent"></Setter>
+                                <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Red"></Setter>
+                                        <Setter Property="BorderBrush" Value="Red"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+    </Grid>
+</UserControl>

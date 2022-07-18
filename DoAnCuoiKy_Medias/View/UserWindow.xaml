@@ -1,0 +1,1298 @@
+﻿<Window x:Class="DoAnCuoiKy_Medias.View.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoAnCuoiKy_Medias.View"
+        xmlns:uc="clr-namespace:DoAnCuoiKy_Medias.UserControlMedias"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:domain="clr-namespace:DoAnCuoiKy_Medias.Domain"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        mc:Ignorable="d"
+        DataContext="{StaticResource UserVM}"
+        Name="userWindow"
+        Title="UserWindow" Height="550" Width="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedMainWindowCommand}" CommandParameter="{Binding ElementName=userWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <uc:UserControlUC Grid.Row="0"></uc:UserControlUC>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Command="{Binding NavBarCommand}" CommandParameter="{Binding ElementName=userWindow}" Background="Transparent" BorderBrush="Transparent" Margin="10,0,0,0">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="{Binding NavBarButton}" Height="25" Width="25"/>
+                    </Button.Content>
+                </Button>
+                <Label Grid.Column="1" Content="NetComplex" FontSize="30" FontWeight="UltraBlack" Foreground="Red" Margin="10,0,0,0" VerticalAlignment="Center"></Label>
+                <Image Grid.Column="4" Width="40" Source="{Binding SelectedProfile.Avatar}" Height="40"></Image>
+                <materialDesign:PopupBox Grid.Column="5" PopupMode="Click" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,15,0" PlacementMode="BottomAndAlignLeftEdges">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="MenuDown" Width="30" BorderBrush="Transparent" Background="Transparent" Foreground="White" Height="30"/>
+                    </materialDesign:PopupBox.ToggleContent>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <ListView ItemsSource="{Binding ProfilesList}" SelectedItem="{Binding SelectedProfiles}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding Avatar}" Width="40" Height="40"></Image>
+                                        <TextBlock Text="{Binding Name}" Foreground="White" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel IsItemsHost="True" Orientation="Vertical"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                        </ListView>
+                        <Button Width="130" Grid.Row="1" Command="{Binding ManageProfilesCommand}" CommandParameter="{Binding ElementName=userWindow}" Margin="0,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="-17,0,0,0">
+                                    <TextBlock Text="Manage Profiles" Foreground="White"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"></Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFE3F2FD"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Width="130" Grid.Row="2" Command="{Binding YourAccountCommand}" CommandParameter="{Binding ElementName=userWindow}" Margin="0,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="-22,0,0,0">
+                                    <materialDesign:PackIcon Kind="AccountCircle" Foreground="White" Margin="0,2.5,2,0"/>
+                                    <TextBlock Text="Your Account" Foreground="White"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"></Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFE3F2FD"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Width="130" Grid.Row="3" Command="{Binding SignOutCommand}" CommandParameter="{Binding ElementName=userWindow }" Margin="0,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="-47,0,0,0">
+                                    <materialDesign:PackIcon Kind="Power" Foreground="White" Height="20" Width="20" Margin="0,2,2,0"/>
+                                    <TextBlock Text="Sign Out" Foreground="White"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"></Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFE3F2FD"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                </materialDesign:PopupBox>
+                <Border Grid.Column="2" BorderBrush="White" CornerRadius="5" Margin="10">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderThickness" Value="1"></Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderThickness" Value="2"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <materialDesign:PopupBox x:Name="popupbox" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" PlacementMode="BottomAndAlignCentres">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <i:InvokeCommandAction Command="{Binding CBCommand}" CommandParameter="{Binding ElementName=popupbox}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <materialDesign:PopupBox.ToggleContent>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding CBContent}" Foreground="White" FontSize="15" Opacity="0.56"></TextBlock>
+                                <materialDesign:PackIcon Grid.Column="1" Kind="ChevronDown" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,2,0,0" Height="20" Width="20"/>
+                            </Grid>
+                        </materialDesign:PopupBox.ToggleContent>
+                        <ListView ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedItemCB, Mode=OneWayToSource}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="3"></UniformGrid>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ListView>
+                    </materialDesign:PopupBox>
+                </Border>
+                <Border Grid.Column="3" BorderBrush="White" CornerRadius="5" Margin="10" Height="40">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderThickness" Value="1"></Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderThickness" Value="2"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Command="{Binding SearchMoviesCommand}" Style="{DynamicResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon Kind="Search" Opacity=".56" Foreground="White"/>
+                        </Button>
+                        <TextBox x:Name="Search" Text="{Binding Search}" Grid.Column="1" Foreground="White" materialDesign:HintAssist.Hint="Search" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" VerticalAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding TextChangedCommand}" CommandParameter="{Binding ElementName=Search}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <Button Command="{Binding RemoveSearchCommand}" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2">
+                            <materialDesign:PackIcon Kind="Close" Foreground="White" Opacity=".56"/>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <Grid Grid.Column="0" Background="Black" Visibility="{Binding Home}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="720"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid>
+                                    <Image Source="{Binding SourceMain.Image}" Visibility="{Binding VisibilityImage}" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0"></Image>
+                                    <MediaElement x:Name="media" Source="{Binding SourceMain.Video}" Visibility="{Binding VisibilityMedia}" Volume="{Binding VolumeMain}" LoadedBehavior="{Binding PlayMoviesMain}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Margin="10,0,0,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="MediaEnded">
+                                                <i:InvokeCommandAction Command="{Binding MediaEndedCommand}" CommandParameter="{Binding ElementName=media}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </MediaElement>
+                                </Grid>
+                                <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,100">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="Transparent"></SolidColorBrush>
+                                    </Grid.Background>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding NameOfMovies}" FontSize="50" FontWeight="UltraBold" FontFamily="Algerian" Width="450" TextWrapping="Wrap" Foreground="Red" Margin="10,0,0,10"></TextBlock>
+                                    <TextBlock Grid.Row="1" FontSize="12" Foreground="White" TextWrapping="Wrap" Margin="10,0,0,10">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}{1}">
+                                                <Binding Path="genresmoviesmaindisplay"></Binding>
+                                                <Binding Path="subgenresmoviesmaindisplay"></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button Background="LightGray" BorderBrush="LightGray" Command="{Binding MainSourceCommand}" CommandParameter="{Binding ElementName=userWindow}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95" Margin="0,0,10,0">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <materialDesign:PackIcon Kind="Play" Foreground="Black" Margin="-2.5,2.5,0,0"/>
+                                                    <TextBlock Text="Play" Foreground="Black"></TextBlock>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button BorderBrush="White" Command="{Binding AddMyListMainCommand}" CommandParameter="{Binding ElementName=userWindow}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95" Margin="0,0,10,0">
+                                            <Button.Background>
+                                                <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                            </Button.Background>
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <materialDesign:PackIcon Kind="Plus" Foreground="White" Margin="-2.5,2.5,0,0"/>
+                                                    <TextBlock Text="My List" Foreground="White"></TextBlock>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button BorderBrush="White" Command="{Binding MoreInfoMainCommand}" CommandParameter="{Binding ElementName=userWindow}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                            <Button.Background>
+                                                <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                            </Button.Background>
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="More Info" Foreground="White"></TextBlock>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                    <materialDesign:RatingBar Grid.Row="4" IsReadOnly="True" Foreground="OrangeRed" Value="{Binding SourceMain.Rate}" Padding="0,5,0,0" Margin="10,0,0,0"/>
+                                </Grid>
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,30,130">
+                                    <Button Command="{Binding VolumeMainCommand}" CommandParameter="{Binding ElementName=userWindow}" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" Background="Transparent" BorderBrush="Transparent" Width="30" Height="30">
+                                        <Button.Content>
+                                            <materialDesign:PackIcon Kind="{Binding VolumeIcon}" HorizontalAlignment="Center" Height="30" Width="30"/>
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Margin="10,0,0,0">
+                                    <Label.Content>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Fire" Width="20" Height="20" Foreground="Red" Margin="0,0,5,0"/>
+                                            <TextBlock Text="TRENDING" FontSize="15" FontWeight="Bold" Foreground="White"></TextBlock>
+                                        </StackPanel>
+                                    </Label.Content>
+                                </Label>
+                                <Grid Grid.Row="1">
+                                    <ListView x:Name="lbTD" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding TrendingList}" SelectedItem="{Binding SelectedItemTD, Mode=OneWayToSource}" Background="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Border Background="White" BorderThickness="5" Name="border1">
+                                                                <Border.Style>
+                                                                    <Style TargetType="Border">
+                                                                        <Setter Property="BorderBrush" Value="Black" />
+                                                                    </Style>
+                                                                </Border.Style>
+                                                                <Grid x:Name="grid" Height="145" Width="200">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"></RowDefinition>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Image x:Name="imageTD" Grid.Row="0" Grid.Column="0" Source="{Binding Image}" Stretch="fill"></Image>
+                                                                    <materialDesign:PopupBox Grid.Row="0" Grid.Column="0" Background="Black" IsPopupOpen="False" PopupMode="MouseOver" x:Name="popupbox1" PlacementMode="TopAndAlignCentres">
+                                                                        <materialDesign:PopupBox.ToggleContent>
+                                                                            <materialDesign:PackIcon Width="0" Height="0" Background="Transparent" Foreground="Transparent"></materialDesign:PackIcon>
+                                                                        </materialDesign:PopupBox.ToggleContent>
+                                                                        <Grid Background="Black">
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition></RowDefinition>
+                                                                                <RowDefinition></RowDefinition>
+                                                                                <RowDefinition></RowDefinition>
+                                                                                <RowDefinition></RowDefinition>
+                                                                            </Grid.RowDefinitions>
+                                                                            <MediaElement x:Name="moviesTD" Grid.Row="0" Source="{Binding Video}" Volume="0" Stretch="Fill" Visibility="Collapsed" LoadedBehavior="Stop"></MediaElement>
+                                                                            <Grid Grid.Row="1" Background="Black" Margin="0,5,0,0">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <Button Grid.Column="0" Command="{Binding ElementName=lbTD, Path=DataContext.PlayMovies}" CommandParameter="{Binding}" Background="LightGray" BorderBrush="LightGray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                                    <Button.Content>
+                                                                                        <StackPanel Orientation="Horizontal">
+                                                                                            <materialDesign:PackIcon Kind="Play" Foreground="Black" Margin="-2.5,2.5,0,0"/>
+                                                                                            <TextBlock Text="Play" Foreground="Black"></TextBlock>
+                                                                                        </StackPanel>
+                                                                                    </Button.Content>
+                                                                                </Button>
+                                                                                <Button Grid.Column="1" BorderBrush="White" Command="{Binding ElementName=lbTD, Path=DataContext.AddMyListCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                                    <Button.Background>
+                                                                                        <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                                    </Button.Background>
+                                                                                    <Button.Content>
+                                                                                        <StackPanel Orientation="Horizontal">
+                                                                                            <materialDesign:PackIcon Kind="Plus" Foreground="White" Margin="-2.5,2.5,0,0"/>
+                                                                                            <TextBlock Text="My List" Foreground="White"></TextBlock>
+                                                                                        </StackPanel>
+                                                                                    </Button.Content>
+                                                                                </Button>
+                                                                                <Button Grid.Column="2" BorderBrush="White" Command="{Binding ElementName=lbTD, Path=DataContext.MoreInfoCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                                    <Button.Background>
+                                                                                        <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                                    </Button.Background>
+                                                                                    <Button.Content>
+                                                                                        <StackPanel Orientation="Horizontal">
+                                                                                            <TextBlock Text="More Info" Foreground="White"></TextBlock>
+                                                                                        </StackPanel>
+                                                                                    </Button.Content>
+                                                                                </Button>
+                                                                            </Grid>
+                                                                            <TextBlock Grid.Row="2" Text="{Binding NameOfMovies}" FontSize="15" Foreground="White" FontFamily="Algerian" HorizontalAlignment="Left" Margin="10"></TextBlock>
+                                                                            <TextBlock Grid.Row="3" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="10,0,10,10">
+                                                                                <TextBlock.Text>
+                                                                                    <MultiBinding StringFormat="{}{0} | {1}">
+                                                                                        <Binding Path="DateOfIssue"></Binding>
+                                                                                        <Binding Path="Nation"></Binding>
+                                                                                    </MultiBinding>
+                                                                                </TextBlock.Text>
+                                                                            </TextBlock>
+                                                                        </Grid>
+                                                                    </materialDesign:PopupBox>
+                                                                    <TextBlock Grid.Row="0" Text="NetComplex" FontSize="15" FontWeight="UltraBold" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                                </Grid>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="border1" Property="BorderBrush" Value="OrangeRed"/>
+                                                                    <Setter TargetName="moviesTD" Property="Visibility" Value="Visible"></Setter>
+                                                                    <Setter TargetName="moviesTD" Property="LoadedBehavior" Value="Play"></Setter>
+                                                                    <Setter TargetName="moviesTD" Property="Height" Value="200"></Setter>
+                                                                    <Setter TargetName="moviesTD" Property="Width" Value="350"></Setter>
+                                                                    <Setter TargetName="popupbox1" Property="IsPopupOpen" Value="True"></Setter>
+                                                                    <Setter TargetName="popupbox1" Property="PopupMode" Value="Click"></Setter>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="IsSelected" Value="True"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                    </ListView>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0" Width="23.75" HorizontalAlignment="Left" Command="{Binding PreviousTDCommand}" Margin="35,5,0,5">
+                                            <Button.Content>
+                                                <materialDesign:PackIcon Kind="ChevronLeft" Height="20" Width="20" Margin="-10"/>
+                                            </Button.Content>
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Background" Value="Transparent"></Setter>
+                                                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                                    <Setter Property="Opacity" Value="0.001"></Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="Black"></Setter>
+                                                            <Setter Property="BorderBrush" Value="Black"></Setter>
+                                                            <Setter Property="Opacity" Value="0.5"></Setter>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                        <Button Grid.Column="1" Width="23.75" HorizontalAlignment="Right" Command="{Binding NextTDCommand}" Margin="0,5,35,5">
+                                            <Button.Content>
+                                                <materialDesign:PackIcon Kind="ChevronRight" Height="20" Width="20" Margin="-10"/>
+                                            </Button.Content>
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Background" Value="Transparent"></Setter>
+                                                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                                    <Setter Property="Opacity" Value="0.001"></Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="Black"></Setter>
+                                                            <Setter Property="BorderBrush" Value="Black"></Setter>
+                                                            <Setter Property="Opacity" Value="0.5"></Setter>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid Grid.Row="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Margin="10,0,0,0">
+                                        <Label.Content>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="Fire" Width="20" Height="20" Foreground="Red" Margin="0,0,5,0"/>
+                                                <TextBlock Text="ALL Movies" FontSize="15" FontWeight="Bold" Foreground="White"></TextBlock>
+                                            </StackPanel>
+                                        </Label.Content>
+                                    </Label>
+                                    <Grid Grid.Row="1">
+                                        <ListView x:Name="lbAM" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding AllMoviesList}" SelectedItem="{Binding SelectedItemAM, Mode=OneWayToSource}" Background="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListBoxItem">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate>
+                                                                <Border Background="White" BorderThickness="5" Name="border2">
+                                                                    <Border.Style>
+                                                                        <Style TargetType="Border">
+                                                                            <Setter Property="BorderBrush" Value="Black" />
+                                                                        </Style>
+                                                                    </Border.Style>
+                                                                    <Grid  Height="145" Width="200">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="*"></RowDefinition>
+                                                                        </Grid.RowDefinitions>
+                                                                        <Image x:Name="imageAM" Grid.Row="0" Source="{Binding Image}" Stretch="fill"></Image>
+                                                                        <materialDesign:PopupBox Grid.Row="0" Grid.Column="0" Background="Black" IsPopupOpen="False" PopupMode="MouseOver" x:Name="popupbox2" PlacementMode="TopAndAlignCentres">
+                                                                            <materialDesign:PopupBox.ToggleContent>
+                                                                                <materialDesign:PackIcon Width="0" Height="0" Background="Transparent" Foreground="Transparent"></materialDesign:PackIcon>
+                                                                            </materialDesign:PopupBox.ToggleContent>
+                                                                            <Grid Background="Black">
+                                                                                <Grid.RowDefinitions>
+                                                                                    <RowDefinition></RowDefinition>
+                                                                                    <RowDefinition></RowDefinition>
+                                                                                    <RowDefinition></RowDefinition>
+                                                                                    <RowDefinition></RowDefinition>
+                                                                                </Grid.RowDefinitions>
+                                                                                <MediaElement x:Name="moviesAM" Grid.Row="0" Source="{Binding Video}" Volume="0" Stretch="Fill" Visibility="Collapsed" LoadedBehavior="Stop"></MediaElement>
+                                                                                <Grid Grid.Row="1" Background="Black" Margin="0,5,0,0">
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <Button Grid.Column="0" Command="{Binding ElementName=lbAM, Path=DataContext.PlayMovies}" CommandParameter="{Binding}" Background="LightGray" BorderBrush="LightGray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                                        <Button.Content>
+                                                                                            <StackPanel Orientation="Horizontal">
+                                                                                                <materialDesign:PackIcon Kind="Play" Foreground="Black" Margin="-2.5,2.5,0,0"/>
+                                                                                                <TextBlock Text="Play" Foreground="Black"></TextBlock>
+                                                                                            </StackPanel>
+                                                                                        </Button.Content>
+                                                                                    </Button>
+                                                                                    <Button Grid.Column="1" BorderBrush="White" Command="{Binding ElementName=lbAM, Path=DataContext.AddMyListCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                                        <Button.Background>
+                                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                                        </Button.Background>
+                                                                                        <Button.Content>
+                                                                                            <StackPanel Orientation="Horizontal">
+                                                                                                <materialDesign:PackIcon Kind="Plus" Foreground="White" Margin="-2.5,2.5,0,0"/>
+                                                                                                <TextBlock Text="My List" Foreground="White"></TextBlock>
+                                                                                            </StackPanel>
+                                                                                        </Button.Content>
+                                                                                    </Button>
+                                                                                    <Button Grid.Column="2" BorderBrush="White" Command="{Binding ElementName=lbAM, Path=DataContext.MoreInfoCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                                        <Button.Background>
+                                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                                        </Button.Background>
+                                                                                        <Button.Content>
+                                                                                            <StackPanel Orientation="Horizontal">
+                                                                                                <TextBlock Text="More Info" Foreground="White"></TextBlock>
+                                                                                            </StackPanel>
+                                                                                        </Button.Content>
+                                                                                    </Button>
+                                                                                </Grid>
+                                                                                <TextBlock Grid.Row="2" Text="{Binding NameOfMovies}" FontSize="15" Foreground="White" FontFamily="Algerian" HorizontalAlignment="Left" Margin="10"></TextBlock>
+                                                                                <TextBlock Grid.Row="3" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="10,0,10,10">
+                                                                                    <TextBlock.Text>
+                                                                                        <MultiBinding StringFormat="{}{0} | {1}">
+                                                                                            <Binding Path="DateOfIssue"></Binding>
+                                                                                            <Binding Path="Nation"></Binding>
+                                                                                        </MultiBinding>
+                                                                                    </TextBlock.Text>
+                                                                                </TextBlock>
+                                                                            </Grid>
+                                                                        </materialDesign:PopupBox>
+                                                                        <TextBlock Grid.Row="0" Text="NetComplex" FontSize="15" FontWeight="Bold" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                                    </Grid>
+                                                                </Border>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter TargetName="border2" Property="BorderBrush" Value="OrangeRed"/>
+                                                                        <Setter TargetName="moviesAM" Property="Visibility" Value="Visible"></Setter>
+                                                                        <Setter TargetName="moviesAM" Property="LoadedBehavior" Value="Play"></Setter>
+                                                                        <Setter TargetName="moviesAM" Property="Height" Value="200"></Setter>
+                                                                        <Setter TargetName="moviesAM" Property="Width" Value="350"></Setter>
+                                                                        <Setter TargetName="popupbox2" Property="IsPopupOpen" Value="True"></Setter>
+                                                                        <Setter TargetName="popupbox2" Property="PopupMode" Value="Click"></Setter>
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="IsSelected" Value="True"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
+                                        </ListView>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Grid.Column="0" Width="23.75" HorizontalAlignment="Left" Command="{Binding PreviousAMCommand}" Margin="35,5,0,5">
+                                                <Button.Content>
+                                                    <materialDesign:PackIcon Kind="ChevronLeft" Height="20" Width="20" Margin="-10"/>
+                                                </Button.Content>
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Background" Value="Transparent"></Setter>
+                                                        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                                        <Setter Property="Opacity" Value="0.001"></Setter>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="Black"></Setter>
+                                                                <Setter Property="BorderBrush" Value="Black"></Setter>
+                                                                <Setter Property="Opacity" Value="0.5"></Setter>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+                                            <Button Grid.Column="1" Width="23.75" HorizontalAlignment="Right" Command="{Binding NextAMCommand}" Margin="0,5,35,5">
+                                                <Button.Content>
+                                                    <materialDesign:PackIcon Kind="ChevronRight" Height="20" Width="20" Margin="-10"/>
+                                                </Button.Content>
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Background" Value="Transparent"></Setter>
+                                                        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                                        <Setter Property="Opacity" Value="0.001"></Setter>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="Black"></Setter>
+                                                                <Setter Property="BorderBrush" Value="Black"></Setter>
+                                                                <Setter Property="Opacity" Value="0.5"></Setter>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+                <Grid Grid.Column="0" Background="Black" Visibility="{Binding MyList}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="My List" Foreground="White" FontSize="25" FontWeight="Bold" Margin="80,40,0,30"></Label>
+                        <ListView Grid.Row="1" x:Name="lbML" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding MyListMovies}" SelectedItem="{Binding SelectedItemML, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="Black" Margin="30,20,0,0">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Border Background="White" BorderThickness="5" Name="border3" Margin="0,10,0,20">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="BorderBrush" Value="Black" />
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Grid  Height="145" Width="200">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Image x:Name="imageML" Grid.Row="0" Source="{Binding Image}" Stretch="fill"></Image>
+                                                        <materialDesign:PopupBox Grid.Row="0" Grid.Column="0" Background="Black" IsPopupOpen="False" PopupMode="MouseOver" x:Name="popupbox3" PlacementMode="TopAndAlignCentres">
+                                                            <materialDesign:PopupBox.ToggleContent>
+                                                                <materialDesign:PackIcon Width="0" Height="0" Background="Transparent" Foreground="Transparent"></materialDesign:PackIcon>
+                                                            </materialDesign:PopupBox.ToggleContent>
+                                                            <Grid Background="Black">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                </Grid.RowDefinitions>
+                                                                <MediaElement x:Name="moviesML" Grid.Row="0" Source="{Binding Video}" Volume="0" Stretch="Fill" Visibility="Collapsed" LoadedBehavior="Stop"></MediaElement>
+                                                                <Grid Grid.Row="1" Background="Black" Margin="0,5,0,0">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Button Grid.Column="0" Command="{Binding ElementName=lbML, Path=DataContext.PlayMovies}" CommandParameter="{Binding}" Background="LightGray" BorderBrush="LightGray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <materialDesign:PackIcon Kind="Play" Foreground="Black" Margin="-2.5,2.5,0,0"/>
+                                                                                <TextBlock Text="Play" Foreground="Black"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                    <Button Grid.Column="1" BorderBrush="White" Command="{Binding ElementName=lbML, Path=DataContext.RemoveMyListCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Background>
+                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                        </Button.Background>
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <materialDesign:PackIcon Kind="DeleteForever" Foreground="White" Margin="-2.5,2.5,2.5,0"/>
+                                                                                <TextBlock Text="My List" Foreground="White"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                    <Button Grid.Column="2" BorderBrush="White" Command="{Binding ElementName=lbML, Path=DataContext.MoreInfoCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Background>
+                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                        </Button.Background>
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="More Info" Foreground="White"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                </Grid>
+                                                                <TextBlock Grid.Row="2" Text="{Binding NameOfMovies}" FontSize="15" Foreground="White" FontFamily="Algerian" HorizontalAlignment="Left" Margin="10"></TextBlock>
+                                                                <TextBlock Grid.Row="3" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="10,0,10,10">
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} | {1}">
+                                                                            <Binding Path="DateOfIssue"></Binding>
+                                                                            <Binding Path="Nation"></Binding>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </Grid>
+                                                        </materialDesign:PopupBox>
+                                                        <TextBlock Grid.Row="0" Text="NetComplex" FontSize="15" FontWeight="Bold" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    </Grid>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="border3" Property="BorderBrush" Value="OrangeRed"/>
+                                                        <Setter TargetName="moviesML" Property="Visibility" Value="Visible"></Setter>
+                                                        <Setter TargetName="moviesML" Property="LoadedBehavior" Value="Play"></Setter>
+                                                        <Setter TargetName="moviesML" Property="Height" Value="200"></Setter>
+                                                        <Setter TargetName="moviesML" Property="Width" Value="350"></Setter>
+                                                        <Setter TargetName="popupbox3" Property="IsPopupOpen" Value="True"></Setter>
+                                                        <Setter TargetName="popupbox3" Property="PopupMode" Value="Click"></Setter>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="IsSelected" Value="True"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel></WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="0" Background="Black" Visibility="{Binding LikedList}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Liked Movies" Foreground="White" FontSize="25" FontWeight="Bold" Margin="80,40,0,30"></Label>
+                        <ListView Grid.Row="1" x:Name="lbLM" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding LikedMovies}" SelectedItem="{Binding SelectedItemLM, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="Black" Margin="30,20,0,0">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Border Background="White" BorderThickness="5" Name="border4" Margin="0,10,0,20">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="BorderBrush" Value="Black" />
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Grid  Height="145" Width="200">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Image x:Name="imageLM" Grid.Row="0" Source="{Binding Image}" Stretch="fill"></Image>
+                                                        <materialDesign:PopupBox Grid.Row="0" Grid.Column="0" Background="Black" IsPopupOpen="False" PopupMode="MouseOver" x:Name="popupbox4" PlacementMode="TopAndAlignCentres">
+                                                            <materialDesign:PopupBox.ToggleContent>
+                                                                <materialDesign:PackIcon Width="0" Height="0" Background="Transparent" Foreground="Transparent"></materialDesign:PackIcon>
+                                                            </materialDesign:PopupBox.ToggleContent>
+                                                            <Grid Background="Black">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                </Grid.RowDefinitions>
+                                                                <MediaElement x:Name="moviesLM" Grid.Row="0" Source="{Binding Video}" Volume="0" Stretch="Fill" Visibility="Collapsed" LoadedBehavior="Stop"></MediaElement>
+                                                                <Grid Grid.Row="1" Background="Black" Margin="0,5,0,0">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Button Grid.Column="0" Command="{Binding ElementName=lbLM, Path=DataContext.PlayMovies}" CommandParameter="{Binding}" Background="LightGray" BorderBrush="LightGray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <materialDesign:PackIcon Kind="Play" Foreground="Black" Margin="-2.5,2.5,0,0"/>
+                                                                                <TextBlock Text="Play" Foreground="Black"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                    <Button Grid.Column="1" BorderBrush="White" Command="{Binding ElementName=lbLM, Path=DataContext.AddMyListCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Background>
+                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                        </Button.Background>
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <materialDesign:PackIcon Kind="Plus" Foreground="White" Margin="-2.5,2.5,0,0"/>
+                                                                                <TextBlock Text="My List" Foreground="White"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                    <Button Grid.Column="2" BorderBrush="White" Command="{Binding ElementName=lbML, Path=DataContext.MoreInfoCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Background>
+                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                        </Button.Background>
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="More Info" Foreground="White"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                </Grid>
+                                                                <TextBlock Grid.Row="2" Text="{Binding NameOfMovies}" FontSize="15" Foreground="White" FontFamily="Algerian" HorizontalAlignment="Left" Margin="10"></TextBlock>
+                                                                <TextBlock Grid.Row="3" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="10,0,10,10">
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} | {1}">
+                                                                            <Binding Path="DateOfIssue"></Binding>
+                                                                            <Binding Path="Nation"></Binding>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </Grid>
+                                                        </materialDesign:PopupBox>
+                                                        <TextBlock Grid.Row="0" Text="NetComplex" FontSize="15" FontWeight="Bold" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    </Grid>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="border4" Property="BorderBrush" Value="OrangeRed"/>
+                                                        <Setter TargetName="moviesLM" Property="Visibility" Value="Visible"></Setter>
+                                                        <Setter TargetName="moviesLM" Property="LoadedBehavior" Value="Play"></Setter>
+                                                        <Setter TargetName="moviesLM" Property="Height" Value="200"></Setter>
+                                                        <Setter TargetName="moviesLM" Property="Width" Value="350"></Setter>
+                                                        <Setter TargetName="popupbox4" Property="IsPopupOpen" Value="True"></Setter>
+                                                        <Setter TargetName="popupbox4" Property="PopupMode" Value="Click"></Setter>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="IsSelected" Value="True"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel></WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="0" Background="Black" Visibility="{Binding HistoryList}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Watch History" Foreground="White" FontSize="25" FontWeight="Bold" Margin="80,40,0,30"></Label>
+                        <ListView Grid.Row="1" x:Name="lbHL" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding HistoryMovies}" SelectedItem="{Binding SelectedItemHL, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="Black" Margin="30,20,0,0">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Border Background="White" BorderThickness="5" Name="border5" Margin="0,10,0,20">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="BorderBrush" Value="Black" />
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Grid  Height="145" Width="200">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Image x:Name="imageHL" Grid.Row="0" Source="{Binding Image}" Stretch="fill"></Image>
+                                                        <materialDesign:PopupBox Grid.Row="0" Grid.Column="0" Background="Black" IsPopupOpen="False" PopupMode="MouseOver" x:Name="popupbox5" PlacementMode="TopAndAlignCentres">
+                                                            <materialDesign:PopupBox.ToggleContent>
+                                                                <materialDesign:PackIcon Width="0" Height="0" Background="Transparent" Foreground="Transparent"></materialDesign:PackIcon>
+                                                            </materialDesign:PopupBox.ToggleContent>
+                                                            <Grid Background="Black">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                </Grid.RowDefinitions>
+                                                                <MediaElement x:Name="moviesHL" Grid.Row="0" Source="{Binding Video}" Volume="0" Stretch="Fill" Visibility="Collapsed" LoadedBehavior="Stop"></MediaElement>
+                                                                <Grid Grid.Row="1" Background="Black" Margin="0,5,0,0">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Button Grid.Column="0" Command="{Binding ElementName=lbHL, Path=DataContext.PlayMovies}" CommandParameter="{Binding}" Background="LightGray" BorderBrush="LightGray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <materialDesign:PackIcon Kind="Play" Foreground="Black" Margin="-2.5,2.5,0,0"/>
+                                                                                <TextBlock Text="Play" Foreground="Black"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                    <Button Grid.Column="1" BorderBrush="White" Command="{Binding ElementName=lbHL, Path=DataContext.AddMyListCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Background>
+                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                        </Button.Background>
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <materialDesign:PackIcon Kind="Plus" Foreground="White" Margin="-2.5,2.5,0,0"/>
+                                                                                <TextBlock Text="My List" Foreground="White"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                    <Button Grid.Column="2" BorderBrush="White" Command="{Binding ElementName=lbHL, Path=DataContext.MoreInfoCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Background>
+                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                        </Button.Background>
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="More Info" Foreground="White"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                </Grid>
+                                                                <TextBlock Grid.Row="2" Text="{Binding NameOfMovies}" FontSize="15" Foreground="White" FontFamily="Algerian" HorizontalAlignment="Left" Margin="10"></TextBlock>
+                                                                <TextBlock Grid.Row="3" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="10,0,10,10">
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} | {1}">
+                                                                            <Binding Path="DateOfIssue"></Binding>
+                                                                            <Binding Path="Nation"></Binding>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </Grid>
+                                                        </materialDesign:PopupBox>
+                                                        <TextBlock Grid.Row="0" Text="NetComplex" FontSize="15" FontWeight="Bold" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    </Grid>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="border5" Property="BorderBrush" Value="OrangeRed"/>
+                                                        <Setter TargetName="moviesHL" Property="Visibility" Value="Visible"></Setter>
+                                                        <Setter TargetName="moviesHL" Property="LoadedBehavior" Value="Play"></Setter>
+                                                        <Setter TargetName="moviesHL" Property="Height" Value="200"></Setter>
+                                                        <Setter TargetName="moviesHL" Property="Width" Value="350"></Setter>
+                                                        <Setter TargetName="popupbox5" Property="IsPopupOpen" Value="True"></Setter>
+                                                        <Setter TargetName="popupbox5" Property="PopupMode" Value="Click"></Setter>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="IsSelected" Value="True"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel></WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="0" Background="Black" Visibility="{Binding FilterList}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="{Binding SelectedItemCB.Name}" Foreground="White" FontSize="25" FontWeight="Bold" Margin="80,40,0,30"></Label>
+                        <ListView Grid.Row="1" x:Name="lbFL" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding FilterListMovies}" SelectedItem="{Binding SelectedItemFL, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="Black" Margin="30,20,0,0">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Border Background="White" BorderThickness="5" Name="border4" Margin="0,10,0,20">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="BorderBrush" Value="Black" />
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Grid  Height="145" Width="200">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Image x:Name="imageFL" Grid.Row="0" Source="{Binding Image}" Stretch="fill"></Image>
+                                                        <materialDesign:PopupBox Grid.Row="0" Grid.Column="0" Background="Black" IsPopupOpen="False" PopupMode="MouseOver" x:Name="popupbox4" PlacementMode="TopAndAlignCentres">
+                                                            <materialDesign:PopupBox.ToggleContent>
+                                                                <materialDesign:PackIcon Width="0" Height="0" Background="Transparent" Foreground="Transparent"></materialDesign:PackIcon>
+                                                            </materialDesign:PopupBox.ToggleContent>
+                                                            <Grid Background="Black">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                    <RowDefinition></RowDefinition>
+                                                                </Grid.RowDefinitions>
+                                                                <MediaElement x:Name="moviesFL" Grid.Row="0" Source="{Binding Video}" Volume="0" Stretch="Fill" Visibility="Collapsed" LoadedBehavior="Stop"></MediaElement>
+                                                                <Grid Grid.Row="1" Background="Black" Margin="0,5,0,0">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                        <ColumnDefinition></ColumnDefinition>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Button Grid.Column="0" Command="{Binding ElementName=lbFL, Path=DataContext.PlayMovies}" CommandParameter="{Binding}" Background="LightGray" BorderBrush="LightGray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <materialDesign:PackIcon Kind="Play" Foreground="Black" Margin="-2.5,2.5,0,0"/>
+                                                                                <TextBlock Text="Play" Foreground="Black"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                    <Button Grid.Column="1" BorderBrush="White" Command="{Binding ElementName=lbFL, Path=DataContext.AddMyListCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Background>
+                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                        </Button.Background>
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <materialDesign:PackIcon Kind="Plus" Foreground="White" Margin="-2.5,2.5,0,0"/>
+                                                                                <TextBlock Text="My List" Foreground="White"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                    <Button Grid.Column="2" BorderBrush="White" Command="{Binding ElementName=lbFL, Path=DataContext.MoreInfoCommand}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95">
+                                                                        <Button.Background>
+                                                                            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+                                                                        </Button.Background>
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="More Info" Foreground="White"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                </Grid>
+                                                                <TextBlock Grid.Row="2" Text="{Binding NameOfMovies}" FontSize="15" Foreground="White" FontFamily="Algerian" HorizontalAlignment="Left" Margin="10"></TextBlock>
+                                                                <TextBlock Grid.Row="3" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="10,0,10,10">
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} | {1}">
+                                                                            <Binding Path="DateOfIssue"></Binding>
+                                                                            <Binding Path="Nation"></Binding>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </Grid>
+                                                        </materialDesign:PopupBox>
+                                                        <TextBlock Grid.Row="0" Text="NetComplex" FontSize="15" FontWeight="Bold" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    </Grid>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="border4" Property="BorderBrush" Value="OrangeRed"/>
+                                                        <Setter TargetName="moviesFL" Property="Visibility" Value="Visible"></Setter>
+                                                        <Setter TargetName="moviesFL" Property="LoadedBehavior" Value="Play"></Setter>
+                                                        <Setter TargetName="moviesFL" Property="Height" Value="200"></Setter>
+                                                        <Setter TargetName="moviesFL" Property="Width" Value="350"></Setter>
+                                                        <Setter TargetName="popupbox4" Property="IsPopupOpen" Value="True"></Setter>
+                                                        <Setter TargetName="popupbox4" Property="PopupMode" Value="Click"></Setter>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="IsSelected" Value="True"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel></WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ListView>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="0" Margin="6,0,0,0" HorizontalAlignment="Left" Background="Black" Visibility="{Binding NavBar}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Command="{Binding HomeCommand}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="Transparent" BorderBrush="Transparent" Height="50">
+                        <Button.Content>
+                            <StackPanel>
+                                <materialDesign:PackIcon Kind="HomeOutline" HorizontalAlignment="Center" Height="25" Width="25"/>
+                                <TextBlock Text="Home" FontSize="10" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Row="1" Command="{Binding MyListCommand}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="Transparent" BorderBrush="Transparent" Height="50">
+                        <Button.Content>
+                            <StackPanel>
+                                <materialDesign:PackIcon Kind="PlayBoxMultiple" HorizontalAlignment="Center" Height="25" Width="25"/>
+                                <TextBlock Text="My List" FontSize="10" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Row="2" Command="{Binding LikedListCommand}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="Transparent" BorderBrush="Transparent" Height="50">
+                        <Button.Content>
+                            <StackPanel>
+                                <materialDesign:PackIcon Kind="ThumbUp" HorizontalAlignment="Center" Height="25" Width="25"/>
+                                <TextBlock Text="Liked" FontSize="10" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Row="3" Command="{Binding HistoryCommand}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="Transparent" BorderBrush="Transparent" Height="50">
+                        <Button.Content>
+                            <StackPanel>
+                                <materialDesign:PackIcon Kind="History" HorizontalAlignment="Center" Height="25" Width="25"/>
+                                <TextBlock Text="History" FontSize="10" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Visibility="{Binding MoreInfoMain}">
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.5" Color="Black"></SolidColorBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="120,0,120,0">
+                <Image Source="{Binding SelectedMovies.Image}" Stretch="Fill"></Image>
+                <Button Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Command="{Binding CloseMoreInfoCommand}" CommandParameter="{Binding ElementName=userWindow}" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="CloseCircle" Height="25" Width="25"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="0" Width="450" HorizontalAlignment="Left" Margin="150,0,150,0">
+                <Grid.Background>
+                    <SolidColorBrush Opacity="0.7" Color="Black"></SolidColorBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,20,0,10">
+                    <TextBlock Text="NETCOMPLEX" Foreground="White" FontSize="15" FontWeight="Bold"></TextBlock>
+                    <TextBlock Text="INTERACTIVE" Foreground="LightGray" FontSize="15" Margin="10,0,0,0"></TextBlock>
+                </StackPanel>
+                <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding NameOfMoviesMoreInfo}" FontSize="30" FontWeight="UltraBold" FontFamily="Algerian" Foreground="White" TextWrapping="Wrap"></TextBlock>
+                <TextBlock Grid.Row="2" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,10">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} | {1}">
+                            <Binding Path="SelectedMovies.DateOfIssue"></Binding>
+                            <Binding Path="SelectedMovies.Nation"></Binding>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Grid.Row="3" Text="{Binding SelectedMovies.Description}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" FontSize="15" TextWrapping="Wrap" Margin="10,0,0,10"></TextBlock>
+                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,20,0,20">
+                    <Button Background="Red" BorderBrush="Red" Command="{Binding PlayMovies}" CommandParameter="{Binding ElementName=userWindow}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95" Margin="0,0,10,0">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Play" Foreground="White" Margin="-2.5,2.5,0,0"/>
+                                <TextBlock Text="Play" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button BorderBrush="White" Command="{Binding AddMyListCommand}" CommandParameter="{Binding ElementName=userWindow}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="95" Margin="0,0,30,0">
+                        <Button.Background>
+                            <SolidColorBrush Opacity="0.5" Color="Black"></SolidColorBrush>
+                        </Button.Background>
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Plus" Foreground="White" Margin="-2.5,2.5,0,0"/>
+                                <TextBlock Text="My List" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <TextBlock VerticalAlignment="Center" Height="30" Width="30">
+                        <Hyperlink Command="{Binding LikeCommand}" Foreground="Transparent">
+                            <materialDesign:PackIcon Kind="ThumbsUp" Foreground="{Binding Like}" Height="30" Width="30"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+                <Grid Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Views:" Foreground="LightGray" FontSize="14"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="{Binding SelectedMovies.Views}" Foreground="Gray" FontSize="14" TextWrapping="Wrap" Margin="10,0,0,0"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Rating:" Foreground="LightGray" FontSize="14"></TextBlock>
+                    <materialDesign:RatingBar Grid.Column="1" IsReadOnly="True" Foreground="OrangeRed" Value="{Binding SelectedMovies.Rate}" Padding="10,0,0,0"/>
+                </Grid>
+                <Grid Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Starring:" Foreground="LightGray" FontSize="14"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="{Binding SelectedMovies.Starring}" Foreground="Gray" FontSize="14" TextWrapping="Wrap" Margin="10,0,0,0"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Genres:" Foreground="LightGray" FontSize="14"></TextBlock>
+                    <TextBlock Grid.Column="1" Foreground="Gray" FontSize="14" TextWrapping="Wrap" Margin="10,0,0,0">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}{1}">
+                                <Binding Path="genresmoviesdisplay"></Binding>
+                                <Binding Path="subgenresmoviesdisplay"></Binding>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Visibility="{Binding ShowMessage}">
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.01" Color="Black"></SolidColorBrush>
+            </Grid.Background>
+            <Grid Height="200" Width="300">
+                <Grid.Background>
+                    <SolidColorBrush Opacity="0.8" Color="Black"></SolidColorBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Message}" FontWeight="Bold" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Margin="5"></TextBlock>
+                <Button Grid.Row="1" Width="100" Height="40" materialDesign:ButtonAssist.CornerRadius="5" Background="Red" BorderBrush="Red" Command="{Binding MessageBoxCommand}" Margin="10">
+                    <Button.Content>
+                        <Label Content="Ok" FontSize="15" FontWeight="Bold" Foreground="White"></Label>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
+

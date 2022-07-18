@@ -1,0 +1,201 @@
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.exe.config
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.exe
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.pdb
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.dll
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.dll
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignColors.dll
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.xml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.pdb
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.xml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.AssemblyReference.cache
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\MainWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\UserControlMedias\UserControlUC.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AddProfilesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AdminDashboard.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseProfilesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseThePlanWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\EditProfilesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ForgotPasswordWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\LoginWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ManageProfilesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\MoviesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\PaymentWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\RegistrationWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\UserWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\YourAccountWindow.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\App.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_Content.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_MarkupCompile.cache
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_MarkupCompile.lref
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\App.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\MainWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\ResourceXAML\MainResource.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\UserControlMedias\UserControlUC.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AddProfilesWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AdminDashboard.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseProfilesWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseThePlanWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\EditProfilesWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ForgotPasswordWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\LoginWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ManageProfilesWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\MoviesWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\PaymentWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\RegistrationWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\UserWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\YourAccountWindow.baml
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.g.resources
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.Properties.Resources.resources
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.GenerateResource.cache
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.CoreCompileInputs.cache
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.CopyComplete
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.exe
+C:\Users\Quang Vinh\Desktop\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.pdb
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.exe.config
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.exe
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.pdb
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.dll
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.dll
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignColors.dll
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.xml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.pdb
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.xml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.AssemblyReference.cache
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\MainWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\UserControlMedias\UserControlUC.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AddProfilesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AdminDashboard.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseProfilesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseThePlanWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\EditProfilesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ForgotPasswordWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\LoginWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ManageProfilesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\MoviesWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\PaymentWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\RegistrationWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\UserWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\YourAccountWindow.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\App.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_Content.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_MarkupCompile.cache
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_MarkupCompile.lref
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\App.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\MainWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\ResourceXAML\MainResource.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\UserControlMedias\UserControlUC.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AddProfilesWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AdminDashboard.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseProfilesWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseThePlanWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\EditProfilesWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ForgotPasswordWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\LoginWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ManageProfilesWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\MoviesWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\PaymentWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\RegistrationWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\UserWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\YourAccountWindow.baml
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.g.resources
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.Properties.Resources.resources
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.GenerateResource.cache
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.CoreCompileInputs.cache
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.CopyComplete
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.exe
+C:\Users\Quang Vinh\Desktop\18600322-18600254-18600374_0900\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.pdb
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.exe.config
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.exe
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\DoAnCuoiKy_Medias.pdb
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.dll
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.SqlServer.dll
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.dll
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.dll
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignColors.dll
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\Microsoft.Expression.Interactions.dll
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\System.Windows.Interactivity.dll
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.xml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\EntityFramework.SqlServer.xml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.pdb
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.xml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.pdb
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\LiveCharts.Wpf.xml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignColors.pdb
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\Microsoft.Expression.Interactions.xml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\bin\Debug\System.Windows.Interactivity.xml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.AssemblyReference.cache
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\MainWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\UserControlMedias\UserControlUC.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AddProfilesWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AdminDashboard.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseProfilesWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseThePlanWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\EditProfilesWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ForgotPasswordWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\LoginWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ManageProfilesWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\MoviesWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\PaymentWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\RegistrationWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\UserWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\YourAccountWindow.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\App.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_Content.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_MarkupCompile.cache
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias_MarkupCompile.lref
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\App.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\MainWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\ResourceXAML\MainResource.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\UserControlMedias\UserControlUC.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AddProfilesWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\AdminDashboard.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseProfilesWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ChooseThePlanWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\EditProfilesWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ForgotPasswordWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\LoginWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\ManageProfilesWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\MoviesWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\PaymentWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\RegistrationWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\UserWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\View\YourAccountWindow.baml
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.g.resources
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.Properties.Resources.resources
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.GenerateResource.cache
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.CoreCompileInputs.cache
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.csproj.CopyComplete
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.exe
+D:\TAI LIEU HOC TAP\NAM 3\DoAnCuoiKy_Medias\DoAnCuoiKy_Medias\obj\Debug\DoAnCuoiKy_Medias.pdb

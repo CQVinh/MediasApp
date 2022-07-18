@@ -1,0 +1,897 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuanLyMediasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="UserPlan" Type="int" />
+          <Property Name="Role" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Genres">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GenresMovies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MoviesId" Type="int" />
+          <Property Name="GenresId" Type="int" />
+        </EntityType>
+        <EntityType Name="HistoryList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileId" Type="int" />
+          <Property Name="MoviesId" Type="int" />
+        </EntityType>
+        <EntityType Name="LikedList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileId" Type="int" />
+          <Property Name="MoviesId" Type="int" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOfMovies" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Video" Type="nvarchar(max)" />
+          <Property Name="DateOfIssue" Type="int" />
+          <Property Name="Nation" Type="varchar(max)" />
+          <Property Name="Rate" Type="int" />
+          <Property Name="Starring" Type="nvarchar(max)" />
+          <Property Name="NameSearch" Type="nvarchar(max)" />
+          <Property Name="Views" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PaymentHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PHEmailId" Type="int" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="CardNumber" Type="varchar(max)" />
+          <Property Name="ExpirationDate" Type="nchar" MaxLength="10" />
+          <Property Name="CVV" Type="nchar" MaxLength="10" />
+          <Property Name="DateOfPayment" Type="date" />
+          <Property Name="PlanId" Type="int" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePlan" Type="nchar" MaxLength="30" />
+          <Property Name="MonthlyPice" Type="int" />
+          <Property Name="VideoQuality" Type="nchar" MaxLength="30" />
+          <Property Name="Resolution" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Playlist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileId" Type="int" />
+          <Property Name="MoviesId" Type="int" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PFEmailId" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Avatar" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SubGenres">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SubGenresMovies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MoviesId" Type="int" />
+          <Property Name="SubGenresId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Account_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="UserPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenresMovies_Genres">
+          <End Role="Genres" Type="Self.Genres" Multiplicity="0..1" />
+          <End Role="GenresMovies" Type="Self.GenresMovies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GenresMovies">
+              <PropertyRef Name="GenresId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenresMovies_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="GenresMovies" Type="Self.GenresMovies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GenresMovies">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryList_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="HistoryList" Type="Self.HistoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryList">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryList_Profiles">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
+          <End Role="HistoryList" Type="Self.HistoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryList">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikedList_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="LikedList" Type="Self.LikedList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LikedList">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikedList_Profiles">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
+          <End Role="LikedList" Type="Self.LikedList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LikedList">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentHistory_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="PHEmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentHistory_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Playlist_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="Playlist" Type="Self.Playlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Playlist">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Playlist_Profiles">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
+          <End Role="Playlist" Type="Self.Playlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Playlist">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profiles_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="PFEmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubGenresMovies_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="SubGenresMovies" Type="Self.SubGenresMovies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubGenresMovies">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubGenresMovies_SubGenres">
+          <End Role="SubGenres" Type="Self.SubGenres" Multiplicity="0..1" />
+          <End Role="SubGenresMovies" Type="Self.SubGenresMovies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubGenres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubGenresMovies">
+              <PropertyRef Name="SubGenresId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyMediasModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genres" EntityType="Self.Genres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenresMovies" EntityType="Self.GenresMovies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoryList" EntityType="Self.HistoryList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikedList" EntityType="Self.LikedList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentHistory" EntityType="Self.PaymentHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Playlist" EntityType="Self.Playlist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubGenres" EntityType="Self.SubGenres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubGenresMovies" EntityType="Self.SubGenresMovies" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_Plan" Association="Self.FK_Account_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenresMovies_Genres" Association="Self.FK_GenresMovies_Genres">
+            <End Role="Genres" EntitySet="Genres" />
+            <End Role="GenresMovies" EntitySet="GenresMovies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenresMovies_Movies" Association="Self.FK_GenresMovies_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="GenresMovies" EntitySet="GenresMovies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryList_Movies" Association="Self.FK_HistoryList_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="HistoryList" EntitySet="HistoryList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryList_Profiles" Association="Self.FK_HistoryList_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="HistoryList" EntitySet="HistoryList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikedList_Movies" Association="Self.FK_LikedList_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="LikedList" EntitySet="LikedList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikedList_Profiles" Association="Self.FK_LikedList_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="LikedList" EntitySet="LikedList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentHistory_Account" Association="Self.FK_PaymentHistory_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentHistory_Plan" Association="Self.FK_PaymentHistory_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Playlist_Movies" Association="Self.FK_Playlist_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="Playlist" EntitySet="Playlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Playlist_Profiles" Association="Self.FK_Playlist_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="Playlist" EntitySet="Playlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profiles_Account" Association="Self.FK_Profiles_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubGenresMovies_Movies" Association="Self.FK_SubGenresMovies_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="SubGenresMovies" EntitySet="SubGenresMovies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubGenresMovies_SubGenres" Association="Self.FK_SubGenresMovies_SubGenres">
+            <End Role="SubGenres" EntitySet="SubGenres" />
+            <End Role="SubGenresMovies" EntitySet="SubGenresMovies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyMediasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPlan" Type="Int32" />
+          <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Plan" Relationship="Self.FK_Account_Plan" FromRole="Account" ToRole="Plan" />
+          <NavigationProperty Name="PaymentHistory" Relationship="Self.FK_PaymentHistory_Account" FromRole="Account" ToRole="PaymentHistory" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FK_Profiles_Account" FromRole="Account" ToRole="Profiles" />
+        </EntityType>
+        <EntityType Name="Genres">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GenresMovies" Relationship="Self.FK_GenresMovies_Genres" FromRole="Genres" ToRole="GenresMovies" />
+        </EntityType>
+        <EntityType Name="GenresMovies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MoviesId" Type="Int32" />
+          <Property Name="GenresId" Type="Int32" />
+          <NavigationProperty Name="Genres" Relationship="Self.FK_GenresMovies_Genres" FromRole="GenresMovies" ToRole="Genres" />
+          <NavigationProperty Name="Movies" Relationship="Self.FK_GenresMovies_Movies" FromRole="GenresMovies" ToRole="Movies" />
+        </EntityType>
+        <EntityType Name="HistoryList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileId" Type="Int32" />
+          <Property Name="MoviesId" Type="Int32" />
+          <NavigationProperty Name="Movies" Relationship="Self.FK_HistoryList_Movies" FromRole="HistoryList" ToRole="Movies" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FK_HistoryList_Profiles" FromRole="HistoryList" ToRole="Profiles" />
+        </EntityType>
+        <EntityType Name="LikedList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileId" Type="Int32" />
+          <Property Name="MoviesId" Type="Int32" />
+          <NavigationProperty Name="Movies" Relationship="Self.FK_LikedList_Movies" FromRole="LikedList" ToRole="Movies" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FK_LikedList_Profiles" FromRole="LikedList" ToRole="Profiles" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOfMovies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfIssue" Type="Int32" />
+          <Property Name="Nation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="Int32" />
+          <Property Name="Starring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameSearch" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Views" Type="Int64" />
+          <NavigationProperty Name="GenresMovies" Relationship="Self.FK_GenresMovies_Movies" FromRole="Movies" ToRole="GenresMovies" />
+          <NavigationProperty Name="HistoryList" Relationship="Self.FK_HistoryList_Movies" FromRole="Movies" ToRole="HistoryList" />
+          <NavigationProperty Name="LikedList" Relationship="Self.FK_LikedList_Movies" FromRole="Movies" ToRole="LikedList" />
+          <NavigationProperty Name="Playlist" Relationship="Self.FK_Playlist_Movies" FromRole="Movies" ToRole="Playlist" />
+          <NavigationProperty Name="SubGenresMovies" Relationship="Self.FK_SubGenresMovies_Movies" FromRole="Movies" ToRole="SubGenresMovies" />
+        </EntityType>
+        <EntityType Name="PaymentHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PHEmailId" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CardNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExpirationDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CVV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DateOfPayment" Type="DateTime" Precision="0" />
+          <Property Name="PlanId" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_PaymentHistory_Account" FromRole="PaymentHistory" ToRole="Account" />
+          <NavigationProperty Name="Plan" Relationship="Self.FK_PaymentHistory_Plan" FromRole="PaymentHistory" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePlan" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="MonthlyPice" Type="Int32" />
+          <Property Name="VideoQuality" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Resolution" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_Plan" FromRole="Plan" ToRole="Account" />
+          <NavigationProperty Name="PaymentHistory" Relationship="Self.FK_PaymentHistory_Plan" FromRole="Plan" ToRole="PaymentHistory" />
+        </EntityType>
+        <EntityType Name="Playlist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileId" Type="Int32" />
+          <Property Name="MoviesId" Type="Int32" />
+          <NavigationProperty Name="Movies" Relationship="Self.FK_Playlist_Movies" FromRole="Playlist" ToRole="Movies" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FK_Playlist_Profiles" FromRole="Playlist" ToRole="Profiles" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PFEmailId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Profiles_Account" FromRole="Profiles" ToRole="Account" />
+          <NavigationProperty Name="HistoryList" Relationship="Self.FK_HistoryList_Profiles" FromRole="Profiles" ToRole="HistoryList" />
+          <NavigationProperty Name="LikedList" Relationship="Self.FK_LikedList_Profiles" FromRole="Profiles" ToRole="LikedList" />
+          <NavigationProperty Name="Playlist" Relationship="Self.FK_Playlist_Profiles" FromRole="Profiles" ToRole="Playlist" />
+        </EntityType>
+        <EntityType Name="SubGenres">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SubGenresMovies" Relationship="Self.FK_SubGenresMovies_SubGenres" FromRole="SubGenres" ToRole="SubGenresMovies" />
+        </EntityType>
+        <EntityType Name="SubGenresMovies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MoviesId" Type="Int32" />
+          <Property Name="SubGenresId" Type="Int32" />
+          <NavigationProperty Name="Movies" Relationship="Self.FK_SubGenresMovies_Movies" FromRole="SubGenresMovies" ToRole="Movies" />
+          <NavigationProperty Name="SubGenres" Relationship="Self.FK_SubGenresMovies_SubGenres" FromRole="SubGenresMovies" ToRole="SubGenres" />
+        </EntityType>
+        <Association Name="FK_Account_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="UserPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentHistory_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="PHEmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profiles_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="PFEmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenresMovies_Genres">
+          <End Role="Genres" Type="Self.Genres" Multiplicity="0..1" />
+          <End Role="GenresMovies" Type="Self.GenresMovies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GenresMovies">
+              <PropertyRef Name="GenresId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenresMovies_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="GenresMovies" Type="Self.GenresMovies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GenresMovies">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryList_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="HistoryList" Type="Self.HistoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryList">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryList_Profiles">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
+          <End Role="HistoryList" Type="Self.HistoryList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryList">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikedList_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="LikedList" Type="Self.LikedList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LikedList">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikedList_Profiles">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
+          <End Role="LikedList" Type="Self.LikedList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LikedList">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Playlist_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="Playlist" Type="Self.Playlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Playlist">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubGenresMovies_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="SubGenresMovies" Type="Self.SubGenresMovies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubGenresMovies">
+              <PropertyRef Name="MoviesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentHistory_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Playlist_Profiles">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
+          <End Role="Playlist" Type="Self.Playlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Playlist">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubGenresMovies_SubGenres">
+          <End Role="SubGenres" Type="Self.SubGenres" Multiplicity="0..1" />
+          <End Role="SubGenresMovies" Type="Self.SubGenresMovies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubGenres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubGenresMovies">
+              <PropertyRef Name="SubGenresId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyMediasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Genres" EntityType="Self.Genres" />
+          <EntitySet Name="GenresMovies" EntityType="Self.GenresMovies" />
+          <EntitySet Name="HistoryList" EntityType="Self.HistoryList" />
+          <EntitySet Name="LikedList" EntityType="Self.LikedList" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" />
+          <EntitySet Name="PaymentHistory" EntityType="Self.PaymentHistory" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" />
+          <EntitySet Name="Playlist" EntityType="Self.Playlist" />
+          <EntitySet Name="Profiles" EntityType="Self.Profiles" />
+          <EntitySet Name="SubGenres" EntityType="Self.SubGenres" />
+          <EntitySet Name="SubGenresMovies" EntityType="Self.SubGenresMovies" />
+          <AssociationSet Name="FK_Account_Plan" Association="Self.FK_Account_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentHistory_Account" Association="Self.FK_PaymentHistory_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profiles_Account" Association="Self.FK_Profiles_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenresMovies_Genres" Association="Self.FK_GenresMovies_Genres">
+            <End Role="Genres" EntitySet="Genres" />
+            <End Role="GenresMovies" EntitySet="GenresMovies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenresMovies_Movies" Association="Self.FK_GenresMovies_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="GenresMovies" EntitySet="GenresMovies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryList_Movies" Association="Self.FK_HistoryList_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="HistoryList" EntitySet="HistoryList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryList_Profiles" Association="Self.FK_HistoryList_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="HistoryList" EntitySet="HistoryList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikedList_Movies" Association="Self.FK_LikedList_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="LikedList" EntitySet="LikedList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikedList_Profiles" Association="Self.FK_LikedList_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="LikedList" EntitySet="LikedList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Playlist_Movies" Association="Self.FK_Playlist_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="Playlist" EntitySet="Playlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubGenresMovies_Movies" Association="Self.FK_SubGenresMovies_Movies">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="SubGenresMovies" EntitySet="SubGenresMovies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentHistory_Plan" Association="Self.FK_PaymentHistory_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Playlist_Profiles" Association="Self.FK_Playlist_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="Playlist" EntitySet="Playlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubGenresMovies_SubGenres" Association="Self.FK_SubGenresMovies_SubGenres">
+            <End Role="SubGenres" EntitySet="SubGenres" />
+            <End Role="SubGenresMovies" EntitySet="SubGenresMovies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyMediasModelStoreContainer" CdmEntityContainer="QuanLyMediasEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserPlan" ColumnName="UserPlan" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.Genres">
+              <MappingFragment StoreEntitySet="Genres">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenresMovies">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.GenresMovies">
+              <MappingFragment StoreEntitySet="GenresMovies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MoviesId" ColumnName="MoviesId" />
+                <ScalarProperty Name="GenresId" ColumnName="GenresId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryList">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.HistoryList">
+              <MappingFragment StoreEntitySet="HistoryList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="MoviesId" ColumnName="MoviesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikedList">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.LikedList">
+              <MappingFragment StoreEntitySet="LikedList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="MoviesId" ColumnName="MoviesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.Movies">
+              <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameOfMovies" ColumnName="NameOfMovies" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+                <ScalarProperty Name="Nation" ColumnName="Nation" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Starring" ColumnName="Starring" />
+                <ScalarProperty Name="NameSearch" ColumnName="NameSearch" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentHistory">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.PaymentHistory">
+              <MappingFragment StoreEntitySet="PaymentHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PHEmailId" ColumnName="PHEmailId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="DateOfPayment" ColumnName="DateOfPayment" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NamePlan" ColumnName="NamePlan" />
+                <ScalarProperty Name="MonthlyPice" ColumnName="MonthlyPice" />
+                <ScalarProperty Name="VideoQuality" ColumnName="VideoQuality" />
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Playlist">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.Playlist">
+              <MappingFragment StoreEntitySet="Playlist">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="MoviesId" ColumnName="MoviesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.Profiles">
+              <MappingFragment StoreEntitySet="Profiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PFEmailId" ColumnName="PFEmailId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubGenres">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.SubGenres">
+              <MappingFragment StoreEntitySet="SubGenres">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubGenresMovies">
+            <EntityTypeMapping TypeName="QuanLyMediasModel.SubGenresMovies">
+              <MappingFragment StoreEntitySet="SubGenresMovies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MoviesId" ColumnName="MoviesId" />
+                <ScalarProperty Name="SubGenresId" ColumnName="SubGenresId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

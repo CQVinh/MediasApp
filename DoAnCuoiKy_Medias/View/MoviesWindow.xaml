@@ -1,0 +1,314 @@
+﻿<Window x:Class="DoAnCuoiKy_Medias.View.MoviesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoAnCuoiKy_Medias.View"
+        xmlns:uc="clr-namespace:DoAnCuoiKy_Medias.UserControlMedias"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:domain="clr-namespace:DoAnCuoiKy_Medias.Domain"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        mc:Ignorable="d"
+        DataContext="{StaticResource MoviesVM}"
+        Name="moviesWindow"
+        Title="MoviesWindow" Height="550" Width="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedMoviesWindowCommand}" CommandParameter="{Binding ElementName=moviesWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <uc:UserControlUC Grid.Row="0"></uc:UserControlUC>
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="{Binding MovieFullScreen}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="800"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Visibility="{Binding Image}">
+                        <Image Source="{Binding Movies.Image}" Stretch="Fill"></Image>
+                        <Button x:Name="play" Command="{Binding Play}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignIconButton}" Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                            <materialDesign:PackIcon Kind="Play" Foreground="White" Width="50" Height="50"/>
+                        </Button>
+                    </Grid>
+                    <MediaElement Name="mePlayer" Source="{Binding Movies.Video}" Volume="{Binding MoviesVolume}" LoadedBehavior="{Binding MoviesStatus}" Stretch="Fill" Visibility="{Binding Movie}"></MediaElement>
+                    <Grid VerticalAlignment="Bottom" Visibility="{Binding ElementName=mePlayer, Path=Visibility}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Height="25" Width="25" Background="Transparent" BorderBrush="Transparent" Command="{Binding ControlCommand}" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}">
+                            <Button.Content>
+                                <materialDesign:PackIcon Kind="{Binding IconControl}" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Button.Content>
+                        </Button>
+                        <Grid Grid.Row="1" Height="{Binding HeightControl}" Visibility="{Binding ElementName=mePlayer, Path=Visibility}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StatusBar Background="Transparent" Margin="5,0,5,0">
+                                    <TextBlock Name="lblProgressStatus" Foreground="White">00:00:00</TextBlock>
+                                </StatusBar>
+                                <Slider Grid.Column="1" Name="sliProgress" Background="Transparent" Foreground="Gray" Thumb.DragStarted="sliProgress_DragStarted" Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" Margin="0,0,10,0"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                    <Button Width="30" Height="30" Command="{Binding StatusCommand}" CommandParameter="{Binding ElementName=moviesWindow}" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Background="Transparent" BorderBrush="Transparent">
+                                        <materialDesign:PackIcon Kind="{Binding Status}" Foreground="White" Width="20" Height="20"/>
+                                    </Button>
+                                    <Button Width="30" Height="30" Command="{Binding RestoreCommand}" CommandParameter="{Binding ElementName=moviesWindow}" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Background="Transparent" BorderBrush="Transparent">
+                                        <materialDesign:PackIcon Kind="Restore" Foreground="White" Width="20" Height="20"/>
+                                    </Button>
+                                    <Button Width="30" Height="30" Command="{Binding VolumeCommand}" CommandParameter="{Binding ElementName=moviesWindow}" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Background="Transparent" BorderBrush="Transparent">
+                                        <materialDesign:PackIcon Kind="{Binding Volume}" Foreground="White" Width="20" Height="20"/>
+                                    </Button>
+                                    <Slider x:Name="SliderVolume" Minimum="0" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="1" Width="75" Background="Transparent" Foreground="White" VerticalAlignment="Center">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="ValueChanged">
+                                                <i:InvokeCommandAction Command="{Binding VolumeChanged}" CommandParameter="{Binding ElementName=SliderVolume}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Slider>
+                                </StackPanel>
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Command="{Binding FullScreenCommand}" CommandParameter="{Binding ElementName=moviesWindow}" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Background="Transparent" BorderBrush="Transparent" Width="30" Height="30">
+                                        <Button.Content>
+                                            <materialDesign:PackIcon Kind="{Binding Screen}" Foreground="White" Width="20" Height="20"/>
+                                        </Button.Content>
+                                    </Button>
+                                    <TextBlock Grid.Column="1" Text="Exit" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0"></TextBlock>
+                                    <Button Grid.Column="2" Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=moviesWindow}" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Background="Transparent" BorderBrush="Transparent" Width="30" Height="30">
+                                        <Button.Content>
+                                            <materialDesign:PackIcon Kind="ExitToApp" Foreground="White" Width="20" Height="20"/>
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Margin="30,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="{Binding NameOfMovies}" FontSize="50" FontWeight="UltraBold" FontFamily="Algerian" TextWrapping="Wrap" Foreground="Red" Margin="5,50,0,20"></TextBlock>
+                        <Border Grid.Row="1" BorderBrush="#FF505050" BorderThickness="0,2,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
+                                <TextBlock Text="{Binding Movies.Views}" FontSize="15" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,4"></TextBlock>
+                                <TextBlock Text="Views" FontSize="15" Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,4"></TextBlock>
+                                <TextBlock Foreground="White" FontSize="15" VerticalAlignment="Bottom" Margin="10,0,0,4">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}Rating: {0}">
+                                            <Binding Path="Movies.Rate"></Binding>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <materialDesign:RatingBar IsReadOnly="True" Foreground="OrangeRed" Value="{Binding Movies.Rate}" Padding="0,5,0,0" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Row="2" BorderBrush="#FF505050" BorderThickness="0,2,0,0">
+                            <TextBlock FontSize="15" Foreground="White" Margin="0,20,0,20">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} | {1}">
+                                        <Binding Path="Movies.DateOfIssue"></Binding>
+                                        <Binding Path="Movies.Nation"></Binding>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </Border>
+                        <Border Grid.Row="3" BorderBrush="#FF505050" BorderThickness="0,2,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
+                                <TextBlock Text="Starring:" FontSize="15" Foreground="White"></TextBlock>
+                                <TextBlock Text="{Binding Movies.Starring}" FontSize="15" Foreground="White" TextWrapping="Wrap" Margin="5,0,0,0"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Row="4" BorderBrush="#FF505050" BorderThickness="0,2,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
+                                <TextBlock Text="Genres:" FontSize="15" Foreground="White"></TextBlock>
+                                <TextBlock FontSize="15" Foreground="White" TextWrapping="Wrap" Margin="5,0,0,0">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}{1}">
+                                            <Binding Path="genresmoviesdisplay"></Binding>
+                                            <Binding Path="subgenresmoviesdisplay"></Binding>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Row="5" BorderBrush="#FF505050" BorderThickness="0,2,0,0">
+                            <Grid Margin="0,20,0,20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Movie Content" FontSize="20" Foreground="White" Margin="0,0,0,10"></TextBlock>
+                                <TextBlock Grid.Row="1" Text="{Binding Movies.Description}" FontSize="15" Foreground="White" TextWrapping="Wrap"></TextBlock>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3" Margin="20,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="200"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Recommended" FontSize="25" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+                    <ListView Grid.Row="1" x:Name="lbRCM" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding RecommendedList}" SelectedItem="{Binding SelectedMovies, Mode=OneWayToSource}" Background="Black" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <Grid x:Name="grid" Height="135" Width="190" Margin="5">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Image x:Name="imageRCM" Source="{Binding Image}" Visibility="Visible" Stretch="fill"></Image>
+                                                <MediaElement x:Name="moviesRCM" Height="135" Width="190" Source="{Binding Video}" Stretch="Fill" Volume="0" Visibility="Collapsed" LoadedBehavior="Manual"></MediaElement>
+                                                <TextBlock Text="NetComplex" FontSize="15" FontWeight="UltraBold" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                <Button x:Name="play" Command="{Binding ElementName=lbRCM, Path=DataContext.PlayMovies}" CommandParameter="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignIconButton}" Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Visibility="Collapsed">
+                                                    <materialDesign:PackIcon Kind="Play" Foreground="White" Width="30" Height="30"/>
+                                                </Button>
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="moviesRCM" Property="Height" Value="190"></Setter>
+                                                    <Setter TargetName="moviesRCM" Property="Width" Value="245"></Setter>
+                                                    <Setter TargetName="moviesRCM" Property="Visibility" Value="Visible"></Setter>
+                                                    <Setter TargetName="moviesRCM" Property="LoadedBehavior" Value="Play"></Setter>
+                                                    <Setter TargetName="play" Property="Visibility" Value="Visible"></Setter>
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Duration="0:0:0.300" To="190" Storyboard.TargetName="grid" Storyboard.TargetProperty="Height"></DoubleAnimation>
+                                                                <DoubleAnimation Duration="0:0:0.300" To="245" Storyboard.TargetName="grid" Storyboard.TargetProperty="Width"></DoubleAnimation>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Duration="0:0:0.300" To="135" Storyboard.TargetName="grid" Storyboard.TargetProperty="Height"></DoubleAnimation>
+                                                                <DoubleAnimation Duration="0:0:0.300" To="190" Storyboard.TargetName="grid" Storyboard.TargetProperty="Width"></DoubleAnimation>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="IsSelected" Value="True"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Command="{Binding PreviousCommand}" CommandParameter="{Binding ElementName=moviesWindow}" Width="23.75" Height="135" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0">
+                            <Button.Content>
+                                <materialDesign:PackIcon Kind="ChevronLeft" Foreground="Black" Height="20" Width="20" Margin="-10"/>
+                            </Button.Content>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"></Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                    <Setter Property="Opacity" Value="0.001"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Black"></Setter>
+                                            <Setter Property="BorderBrush" Value="Black"></Setter>
+                                            <Setter Property="Opacity" Value="0.3"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Grid.Column="1" Command="{Binding NextCommand}" CommandParameter="{Binding ElementName=moviesWindow}" Width="23.75" Height="135" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0">
+                            <Button.Content>
+                                <materialDesign:PackIcon Kind="ChevronRight" Foreground="Black" Height="20" Width="20" Margin="-10"/>
+                            </Button.Content>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"></Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                                    <Setter Property="Opacity" Value="0.001"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Black"></Setter>
+                                            <Setter Property="BorderBrush" Value="Black"></Setter>
+                                            <Setter Property="Opacity" Value="0.3"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
+
